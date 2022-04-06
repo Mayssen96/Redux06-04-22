@@ -1,7 +1,14 @@
 import React from 'react'
 import {Card,Row,Col,Badge} from 'react-bootstrap'
 import {Link } from 'react-router-dom'
+import {deleteMovie} from '../../redux/action'
+import {useDispatch} from 'react-redux'
 function CustomCard({el}) {
+  const dispatch = useDispatch()
+  const delMovie = (id) => {
+    dispatch( deleteMovie(id))
+   
+  }
   return (
     <div>
       
@@ -22,7 +29,10 @@ function CustomCard({el}) {
     {el.rating}
   </Badge>
   <Badge pill bg={"danger"}>
-    {el.categorie.map (categ=> <Link to = {`/categorie/${categ}` } ><span>  {categ} /</span> </Link> )}
+    {el.categorie?.map (categ=> <Link to = {`/categorie/${categ}` } ><span>  {categ} /</span> </Link> )}
+  </Badge>
+  <Badge pill bg={"danger"} onClick={()=>delMovie(el.id)}>
+     delete
   </Badge>
     </Card.Footer>
   </Card>

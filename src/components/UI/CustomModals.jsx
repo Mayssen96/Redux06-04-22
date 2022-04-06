@@ -3,7 +3,7 @@ import {Modal,Button} from 'react-bootstrap'
 import Input from './input';
 import {useState} from 'react'
 import {addMovie} from '../../redux/action'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 function CustomModals() {
     const dispatch = useDispatch();
  
@@ -15,19 +15,26 @@ function CustomModals() {
     const [image,setImage] = useState('')
     const [rating,setrating] = useState('')
     const [description,setDescription] = useState('')
-    console.log(title)
-    const addNewMovie =() => {
-        dispatch ( addMovie({title,description,image,rating}))
+  
+    console.log(title,rating)
+    const yosra=useSelector(state=>state.Movie)
+    // const addNewMovie =() => {
+    //   yosra.push({id:yosra.length+1,title,description,image,rating})
+    //     dispatch ( addMovie(yosra))
+    // }
+    const addNewMovie=()=>{
+      dispatch(addMovie({id:yosra.length+1,title,description,posterURL :image,rating})) 
+      handleClose ()
     }
     return (
       <>
         <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
+         ADD
         </Button>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>add new movie</Modal.Title>
           </Modal.Header>
           <Modal.Body>
               <Input onChange={(e)=> setTitle(e.target.value)} type='texte' placeholder = 'title'/>

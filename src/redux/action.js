@@ -1,4 +1,5 @@
-import {ADD_MOVIE} from './action-type'
+import {ADD_MOVIE,DELETE_MOVIE} from './action-type'
+
 export const addMovie = (data) => {
 return {
     type : ADD_MOVIE,
@@ -6,3 +7,10 @@ return {
 }
 
 }
+export const deleteMovie = (id) => {
+    return {
+        type : DELETE_MOVIE,
+        payload : id
+    }
+    
+    }
