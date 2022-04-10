@@ -46,7 +46,7 @@ function CustomModals() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={()=> addNewMovie ()}>
+            <Button variant="primary" onClick={()=> addNewMovie()}>
               Save Changes
             </Button>
           </Modal.Footer>
